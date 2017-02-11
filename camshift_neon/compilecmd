@@ -1,0 +1,1 @@
+/usr/local/angstrom/arm/bin/arm-angstrom-linux-gnueabi-g++ -o camshift_neon camshift.cpp -I/usr/local/angstrom/arm/arm-angstrom-linux-gnueabi/usr/include -L/usr/local/angstrom/arm/arm-angstrom-linux-gnueabi/usr/lib -lopencv_core -lopencv_highgui -lopencv_imgproc
