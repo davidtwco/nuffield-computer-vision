@@ -2,6 +2,9 @@
 #include <opencv2/imgproc/imgproc.hpp>
 #include <opencv2/core/core.hpp>
 
+#define _USE_MATH_DEFINES
+#include <math.h>
+
 #include <iostream> // Comment this out when not printing anything.
 #include <stdio.h>
 #include <stdlib.h>
@@ -67,7 +70,7 @@ int captureWidth, captureHeight;
 MouseParams mouseData;
 
 int main() {
-	VideoCapture capture = VideoCapture(-1);
+	VideoCapture capture = VideoCapture(0);
 	if (!capture.isOpened()) {
 		return -1;
 	}
@@ -294,17 +297,21 @@ void getRangeFromSelection(Mat& histogramImg, int& hueValue, Mat image, int bins
 	// Convert to HSV
 	cvtColor(image, imageHSV, CV_RGB2HSV);
 
-	Mat hist;
+	SparseMat hist;
 	int channels[] = { 0 };
 	int histSize[] = { bins };
 	float hueRange[] = { 0, 180 };
 	const float* ranges[] = { hueRange };
 	calcHist(&imageHSV, 1, channels, Mat(), hist, 1, histSize, ranges, true, false);
 
+	double minValue = 0;
 	double maxValue = 0;
+	int minValueLocation = 0;
 	int maxValueLocation = 0;
-	minMaxLoc(hist, 0, &maxValue, 0, &maxValueLocation);
-	double highestBinVal = hist.at<int>(maxValueLocation);
+	minMaxLoc(hist, &minValue, &maxValue, &minValueLocation, &maxValueLocation);
+	Mat histDense;
+	hist.copyTo(histDense);
+	double highestBinVal = histDense.at<int>(maxValueLocation);
 
 	int scaleY = maxValue * 0.006;
 	scaleY = scaleY == 0 ? 1 : scaleY;
@@ -313,7 +320,7 @@ void getRangeFromSelection(Mat& histogramImg, int& hueValue, Mat image, int bins
 	histogramImg = Mat::zeros((maxValue / scaleY) + padding, bins * scaleX, CV_8UC3);
 
 	for (int h = 0; h < bins; h++) {
-		double binVal = hist.at<int>(h);
+		double binVal = histDense.at<int>(h);
 		int value = (binVal / highestBinVal) * maxValue;
 
 		int hueValue = (h * (180 / bins));
