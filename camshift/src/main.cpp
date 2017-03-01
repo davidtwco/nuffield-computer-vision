@@ -176,7 +176,9 @@ int main() {
 			counter = 0;
 
 		int key = waitKey(10);
-//		cout << key << endl;
+		if (key != -1) {
+			cout << key << endl;
+		}
 		int keyVal = processKey(key);
 		if (keyVal == -2) {
 			return 0; //Quit
@@ -619,44 +621,44 @@ int processKey(int keyVal) {
 	if (keyVal == -1)
 		return -1;
 	// Key pressed
-	if (keyVal == 1048689) // Q
+	if (keyVal == 113) // Q
 		return -2;
-	else if (keyVal == 1048691) { // S
+	else if (keyVal == 115) { // S
 		mouseData.trackingType += 1;
 		if (mouseData.trackingType > 2)
 			mouseData.trackingType = 0;
 		return -3;
-	} else if (keyVal == 1048680) { // H
+	} else if (keyVal == 104) { // H
 		return -5;
-	} else if (keyVal == 1048676) { // D
+	} else if (keyVal == 100) { // D
 		return -4;
-	} else if (keyVal == 1048678) {
+	} else if (keyVal == 102) { // F
 		return -6;
-	} else if (keyVal == 1048682) { // j
+	} else if (keyVal == 106) { // j
 		return -7;
-	} else if (keyVal == 1048683) { // k
+	} else if (keyVal == 107) { // k
 		return -8;
-	} else if (keyVal == 1048684) { // l
+	} else if (keyVal == 108) { // l
 		return -9;
-	} else if (keyVal == 1048685 || keyVal == 17825901) { // m
+	} else if (keyVal == 109) { // m
 		return -10;
-	} else if (keyVal == 1048625) // 1
+	} else if (keyVal == 49) // 1
 		return 1;
-	else if (keyVal == 1048626) // 2
+	else if (keyVal == 50) // 2
 		return 2;
-	else if (keyVal == 1048627) // 3
+	else if (keyVal == 51) // 3
 		return 3;
-	else if (keyVal == 1048628) // 4
+	else if (keyVal == 52) // 4
 		return 4;
-	else if (keyVal == 1048629) // 5
+	else if (keyVal == 53) // 5
 		return 5;
-	else if (keyVal == 1048630) // 6
+	else if (keyVal == 54) // 6
 		return 6;
-	else if (keyVal == 1048631) // 7
+	else if (keyVal == 55) // 7
 		return 7;
-	else if (keyVal == 1048632) // 8
+	else if (keyVal == 56) // 8
 		return 8;
-	else if (keyVal == 1048633) // 9
+	else if (keyVal == 57) // 9
 		return 9;
 // Key that I don't care about, pressed.
 	return 0;
