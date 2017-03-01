@@ -1,6 +1,7 @@
 //#include "stdafx.h"
 
-#include <cmath>
+#define _USE_MATH_DEFINES
+#include <math.h>
 
 #include "fdog.h"
 #include "myvec.h"

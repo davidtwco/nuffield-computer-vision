@@ -1,5 +1,6 @@
 #include <stdlib.h>
 #include <stdio.h>
+#define _USE_MATH_DEFINES
 #include <math.h>
 #include <iostream>
 
@@ -54,7 +55,7 @@ void update() {
 	if (USE_VIDEO) {
 		namedWindow("Output Image", CV_WINDOW_NORMAL);
 		CvCapture* capture;
-		capture = cvCaptureFromCAM(-1);
+		capture = cvCaptureFromCAM(0);
 		cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_WIDTH, 320);
 		cvSetCaptureProperty(capture, CV_CAP_PROP_FRAME_HEIGHT, 240);
 
@@ -66,11 +67,11 @@ void update() {
 	} else {
 		namedWindow("Output Image", CV_WINDOW_AUTOSIZE | CV_WINDOW_KEEPRATIO | CV_GUI_EXPANDED);
 
-		Mat originalFrame = imread("/home/student/Pictures/Finals/horsecarriage.jpg");
+		Mat originalFrame = imread("C:\\Users\\David Wood\\Pictures\\input.jpg");
 		Mat outputFrame = runComputations(originalFrame, bilatFilterSize, quantLevel);
 		imshow("Output Image", outputFrame);
 		if (SAVE_IMAGE) {
-			imwrite("/home/student/Pictures/abstraction.jpg", outputFrame);
+			imwrite("C:\\Users\\David Wood\\Pictures\\abstraction.jpg", outputFrame);
 		}
 	}
 }
