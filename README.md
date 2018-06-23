@@ -3,5 +3,5 @@ This project contains code from a Nuffield Placement at the Glasgow Caledonian U
 
 ## Report & Poster
 During the placement, I produced the following report and poster on the project:
-- [Report](https://docs.google.com/document/d/1M30QKyLljS74zD5Ya_MulSjfamR3OIq70g4lvjpnY5E/edit?usp=sharing)
-- [Poster](https://docs.google.com/presentation/d/1s-yPVITtAV9JKNcGmh5o4vZd9bjJ6pyuOZ7YzCczV9Q/edit?usp=sharing)
+- [Report](https://davidtw.co/media/camshift_report.pdf)
+- [Poster](https://davidtw.co/media/camshift_poster.pdf)
